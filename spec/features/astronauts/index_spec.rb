@@ -47,4 +47,16 @@ RSpec.describe 'astronaut index page' do
       expect(@mission.title).to appear_before(@mission_3.title)
     end
   end
+
+  it 'can add a mission to the astronaut list of missions' do
+    visit '/astronauts'
+
+    within "#astronaut-#{@astro.id}" do
+      fill_in(:search, with: 'moon')
+      click_button("Search")
+
+      expect(page).to have_content(@mission_3.title)
+      expect(current_path).to eq('/astronauts')
+    end
+  end
 end

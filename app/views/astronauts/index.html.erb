@@ -12,6 +12,11 @@
       <% astronaut.missions.order(:title).each do |mission| %>
         <%= mission.title %>
       <% end %>
+      <%= form_with url: "/astronaut/#{astronaut.id}/missions", method: :post, local: true do |f| %>
+        <%= f.label :search %>
+        <%= f.text_field :search %>
+        <%= f.submit "Search" %>
+      <% end %>
     </p>
   </section>
 <% end %>
