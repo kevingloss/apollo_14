@@ -2,9 +2,17 @@
 
 <% @astronauts.each do |astronaut| %>
   <section id="astronaut-<%= "#{astronaut.id}"%>">
-    Name: <%= astronaut.name %>
-    Age: <%= astronaut.age %>
-    Job: <%= astronaut.job %>
+    <p>
+      Name: <%= astronaut.name %>
+      Age: <%= astronaut.age %>
+      Job: <%= astronaut.job %>
+    </p>
+    <p>
+      Missions:
+      <% astronaut.missions.order(:title).each do |mission| %>
+        <%= mission.title %>
+      <% end %>
+    </p>
   </section>
 <% end %>
 
